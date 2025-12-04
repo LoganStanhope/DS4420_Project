@@ -21,28 +21,28 @@ export default function MyComponent() {
         </p>
         <Image 
           src="/avgPredicitedAllergyProbAcrossAllDishes.png" 
-          alt="Project visual" 
+          alt="Average Predicted Allergy Probability Across All Dishes" 
           width={400} 
           height={300}
           className="mx-auto mb-6 rounded-xl"
         />
         <Image 
           src="/dishAllergyDist.png" 
-          alt="Project visual" 
+          alt="Distribution of Safety Scores for 'Fish Allergy' Across Restaurants" 
           width={400} 
           height={300}
           className="mx-auto mb-6 rounded-xl"
         />
         <Image 
           src="/milkAllergyDist.png" 
-          alt="Project visual" 
+          alt="Distribution of Safety Scores for 'Milk Allergy' Across Restaurants" 
           width={400} 
           height={300}
           className="mx-auto mb-6 rounded-xl"
         />
         <Image 
           src="/distributionOfSafetyScores.png" 
-          alt="Project visual" 
+          alt="Distribution of Restaurant Safety Scores"
           width={400} 
           height={300}
           className="mx-auto mb-6 rounded-xl"
