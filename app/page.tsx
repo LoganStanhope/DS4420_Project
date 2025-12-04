@@ -47,6 +47,20 @@ export default function MyComponent() {
           height={300}
           className="mx-auto mb-6 rounded-xl"
         />
+        <Image 
+          src="/poultryAllergyStats.png" 
+          alt="Top and Bottom 5 Restaurants for Poultry Allergy Ranking"
+          width={400} 
+          height={300}
+          className="mx-auto mb-6 rounded-xl"
+        />
+        <Image 
+          src="/fishAllergyStats.png" 
+          alt="Top and Bottom 5 Restaurants for Fish Allergy Ranking"
+          width={400} 
+          height={300}
+          className="mx-auto mb-6 rounded-xl"
+        />
       </div>
     </Container>
   );
