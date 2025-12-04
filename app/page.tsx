@@ -19,6 +19,9 @@ export default function MyComponent() {
           learning principles, specifically about the concepts of Multi-Layer Perceptrons and Bayesian Models
           – then in turn, we will describe how we were able to address this problem with a working implementation in Python and R.
         </p>
+         <br />
+        <hr></hr>
+         <br />
         <Image 
           src="/avgPredicitedAllergyProbAcrossAllDishes.png" 
           alt="Average Predicted Allergy Probability Across All Dishes" 
@@ -26,6 +29,9 @@ export default function MyComponent() {
           height={300}
           className="mx-auto mb-6 rounded-xl"
         />
+        <p>
+          Average Predicted Allergy Probability Across All Dishes 
+        </p>
         <Image 
           src="/dishAllergyDist.png" 
           alt="Distribution of Safety Scores for 'Fish Allergy' Across Restaurants" 
@@ -33,6 +39,9 @@ export default function MyComponent() {
           height={300}
           className="mx-auto mb-6 rounded-xl"
         />
+        <p>
+          Distribution of Safety Scores for 'Fish Allergy' Across Restaurants
+        </p>
         <Image 
           src="/milkAllergyDist.png" 
           alt="Distribution of Safety Scores for 'Milk Allergy' Across Restaurants" 
@@ -40,6 +49,9 @@ export default function MyComponent() {
           height={300}
           className="mx-auto mb-6 rounded-xl"
         />
+        <p>
+          Distribution of Safety Scores for 'Milk Allergy' Across Restaurants
+        </p>
         <Image 
           src="/distributionOfSafetyScores.png" 
           alt="Distribution of Restaurant Safety Scores"
@@ -47,6 +59,9 @@ export default function MyComponent() {
           height={300}
           className="mx-auto mb-6 rounded-xl"
         />
+        <p>
+          Distribution of Restaurant Safety Scores
+        </p>
         <Image 
           src="/poultryAllergyStats.png" 
           alt="Top and Bottom 5 Restaurants for Poultry Allergy Ranking"
@@ -54,6 +69,9 @@ export default function MyComponent() {
           height={300}
           className="mx-auto mb-6 rounded-xl"
         />
+        <p>
+          Top and Bottom 5 Restaurants for Poultry Allergy Ranking
+        </p>
         <Image 
           src="/fishAllergyStats.png" 
           alt="Top and Bottom 5 Restaurants for Fish Allergy Ranking"
@@ -61,6 +79,9 @@ export default function MyComponent() {
           height={300}
           className="mx-auto mb-6 rounded-xl"
         />
+        <p>
+          Top and Bottom 5 Restaurants for Fish Allergy Ranking
+        </p>
       </div>
     </Container>
   );
