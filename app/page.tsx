@@ -1,4 +1,5 @@
 import { Container } from "react-bootstrap";
+import Image from "next/image";
 
 export default function MyComponent() {
   return (
@@ -18,6 +19,34 @@ export default function MyComponent() {
           learning principles, specifically about the concepts of Multi-Layer Perceptrons and Bayesian Models
           – then in turn, we will describe how we were able to address this problem with a working implementation in Python and R.
         </p>
+        <Image 
+          src="public/avgPredicitedAllergyProbAcrossAllDishes.png" 
+          alt="Project visual" 
+          width={400} 
+          height={300}
+          className="mx-auto mb-6 rounded-xl"
+        />
+        <Image 
+          src="public/dishAllergyDist.png" 
+          alt="Project visual" 
+          width={400} 
+          height={300}
+          className="mx-auto mb-6 rounded-xl"
+        />
+        <Image 
+          src="public/milkAllergyDist.png" 
+          alt="Project visual" 
+          width={400} 
+          height={300}
+          className="mx-auto mb-6 rounded-xl"
+        />
+        <Image 
+          src="public/public/distributionOfSafetyScores.png" 
+          alt="Project visual" 
+          width={400} 
+          height={300}
+          className="mx-auto mb-6 rounded-xl"
+        />
       </div>
     </Container>
   );
