@@ -1,14 +1,16 @@
 import { Container } from "react-bootstrap";
-export default function MyComponent() {
 
+export default function MyComponent() {
   return (
-    <Container>
-      <div>
+    <Container className="min-h-screen flex justify-center items-center">
+      <div className="text-center max-w-3xl">
         <h1>Welcome to our DS4420 Final Project!</h1>
         <h3>Team Members: Logan Stanhope & Zoe Chapman</h3>
-        <br></br>
-        <hr></hr>
-        <br></br>
+
+        <br />
+        <hr />
+        <br />
+
         <p>
           Our main goal in this project is to output and rank allergy safe restaurants given a
           specific sensitivity when prompted with a list of popular New York restaurants and their
@@ -20,4 +22,3 @@ export default function MyComponent() {
     </Container>
   );
 }
-
