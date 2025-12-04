@@ -32,6 +32,7 @@ export default function MyComponent() {
         <p>
           Average Predicted Allergy Probability Across All Dishes 
         </p>
+        <br />
         <Image 
           src="/dishAllergyDist.png" 
           alt="Distribution of Safety Scores for 'Fish Allergy' Across Restaurants" 
@@ -42,6 +43,7 @@ export default function MyComponent() {
         <p>
           Distribution of Safety Scores for 'Fish Allergy' Across Restaurants
         </p>
+        <br />
         <Image 
           src="/milkAllergyDist.png" 
           alt="Distribution of Safety Scores for 'Milk Allergy' Across Restaurants" 
@@ -52,6 +54,7 @@ export default function MyComponent() {
         <p>
           Distribution of Safety Scores for 'Milk Allergy' Across Restaurants
         </p>
+        <br />
         <Image 
           src="/distributionOfSafetyScores.png" 
           alt="Distribution of Restaurant Safety Scores"
@@ -62,6 +65,7 @@ export default function MyComponent() {
         <p>
           Distribution of Restaurant Safety Scores
         </p>
+        <br />
         <Image 
           src="/poultryAllergyStats.png" 
           alt="Top and Bottom 5 Restaurants for Poultry Allergy Ranking"
@@ -72,6 +76,7 @@ export default function MyComponent() {
         <p>
           Top and Bottom 5 Restaurants for Poultry Allergy Ranking
         </p>
+        <br />
         <Image 
           src="/fishAllergyStats.png" 
           alt="Top and Bottom 5 Restaurants for Fish Allergy Ranking"
@@ -82,6 +87,7 @@ export default function MyComponent() {
         <p>
           Top and Bottom 5 Restaurants for Fish Allergy Ranking
         </p>
+        <br />
       </div>
     </Container>
   );
