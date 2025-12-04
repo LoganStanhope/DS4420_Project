@@ -2,7 +2,7 @@ import { Container } from "react-bootstrap";
 
 export default function MyComponent() {
   return (
-    <Container className="min-h-screen flex justify-center items-center">
+    <Container className="flex justify-center">
       <div className="text-center max-w-3xl">
         <h1>Welcome to our DS4420 Final Project!</h1>
         <h3>Team Members: Logan Stanhope & Zoe Chapman</h3>
