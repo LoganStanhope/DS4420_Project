@@ -20,28 +20,28 @@ export default function MyComponent() {
           – then in turn, we will describe how we were able to address this problem with a working implementation in Python and R.
         </p>
         <Image 
-          src="public/avgPredicitedAllergyProbAcrossAllDishes.png" 
+          src="/avgPredicitedAllergyProbAcrossAllDishes.png" 
           alt="Project visual" 
           width={400} 
           height={300}
           className="mx-auto mb-6 rounded-xl"
         />
         <Image 
-          src="public/dishAllergyDist.png" 
+          src="/dishAllergyDist.png" 
           alt="Project visual" 
           width={400} 
           height={300}
           className="mx-auto mb-6 rounded-xl"
         />
         <Image 
-          src="public/milkAllergyDist.png" 
+          src="/milkAllergyDist.png" 
           alt="Project visual" 
           width={400} 
           height={300}
           className="mx-auto mb-6 rounded-xl"
         />
         <Image 
-          src="public/public/distributionOfSafetyScores.png" 
+          src="/distributionOfSafetyScores.png" 
           alt="Project visual" 
           width={400} 
           height={300}
