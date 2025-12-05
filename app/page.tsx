@@ -23,7 +23,7 @@ export default function MyComponent() {
         <hr></hr>
          <br />
          <Image 
-          src="/zoeMLPvsBay.png" 
+          src="/PNG_image.png" 
           alt="Top and Bottom 5 Restaurants for Poultry Allergy Ranking"
           width={400} 
           height={300}
@@ -152,6 +152,17 @@ export default function MyComponent() {
         />
         <p>
           Top 5 Safest Restaurants for a Fish Allergy (Bayesian Model)
+        </p>
+        <br />
+        <Image 
+          src="/PNG_image_2.png" 
+          alt="Top and Bottom 5 Restaurants for Poultry Allergy Ranking"
+          width={400} 
+          height={300}
+          className="mx-auto mb-6 rounded-xl"
+        />
+        <p>
+          Comparison of MLP vs Bayesian Restaurant Safe Scores For Milk Allergy (MLP vs Bayesian Model)
         </p>
         <br />
       </div>
