@@ -1,0 +1,191 @@
+---
+title: "final-proj"
+output: html_document
+date: "2025-12-04"
+---
+
+This section of the project implements a Beta–Binomial Bayesian model to estimate, 
+for each restaurant, the probability that a dish is unsafe for a given allergy. 
+A restaurant level safety score (expected proportion of safe dishes) is calculated 
+using the posterior distribution. Each restaurant is then classified as safe (1)
+or unsafe (0) based on a threshold to make the decision making process even more
+simple. 
+
+```{r}
+# import packages for visualization later
+library(ggplot2)
+library(knitr)
+
+# dataset produced by first MLP step
+dishes <- read.csv('~/Downloads/dishes_allergies.csv')
+
+# function to run the model for a given allergy
+run_bayes_for_allergy <- function(dishes,
+                                  allergy,
+                                  tau_i     = 0.90,
+                                  alpha0     = 1,
+                                  beta0      = 1,
+                                  safe_thresh = 0.99,
+                                  n_sims     = 5000) {
+  
+  # threshold to define unsafe dishes. introduced because the range of safety probability
+  # scores was relatively narrow and the variability between restaurants were
+  # small, so most of the restaurants sampled from the posterior were deemed "safe", 
+  # making the model's results not very meaningful. 
+  tau <- quantile(dishes[[allergy]], tau_i, na.rm = TRUE)
+  
+  # restaurant list
+  restaurants <- unique(dishes$Restaurant)
+  n_rest <- length(restaurants)
+  
+  # total dishes and unsafe dishes per restaurant
+  n_items <- numeric(n_rest)
+  k_items <- numeric(n_rest)
+  
+  # get all predicted allergy probabilities for each restaurant
+  for (i in seq_len(n_rest)) {
+    idx   <- dishes$Restaurant == restaurants[i]
+    probs <- dishes[idx, allergy]
+    
+    n_items[i] <- length(probs) #  total dishes
+    k_items[i] <- sum(probs > tau)   # unsafe dishes
+  }
+  
+  # beta(1,1) prior -> posterior params
+  alpha_post <- alpha0 + k_items
+  beta_post  <- beta0  + (n_items - k_items)
+  
+  # posterior sampling
+  theta_samples <- matrix(0, n_rest, n_sims)
+  for (i in seq_len(n_rest)) {
+    theta_samples[i, ] <- rbeta(n_sims, alpha_post[i], beta_post[i])
+  }
+  
+   # E[unsafe rate]
+  mean_theta   <- rowMeans(theta_samples)
+  # expected fraction safe
+  safety_score <- 1 - mean_theta 
+  # deemed safe if score > safety threshold
+  safe_binary  <- ifelse(safety_score > safe_thresh, 1, 0)
+  
+  # compile results into df
+  results <- data.frame(
+    Restaurant        = restaurants,
+    Total_Dishes      = n_items,
+    Unsafe_Dish_Count = k_items,
+    Mean_Unsafe_Rate  = mean_theta,
+    Safety_Score      = safety_score,
+    Is_Safe           = safe_binary
+  )
+  
+  # return everything in a list
+  list(
+    allergy  = allergy,
+    tau          = tau,
+    alpha0       = alpha0,
+    beta0        = beta0,
+    results      = results,
+    safety_score = safety_score
+  )
+}
+```
+
+
+```{r}
+# plug in lactose intolerance for test
+allergy <- "prob_milk.allergy...lactose.intolerance"
+bayes_out <- run_bayes_for_allergy(
+  dishes = dishes,
+  allergy = allergy
+)
+results       <- bayes_out$results
+safety_score  <- bayes_out$safety_score
+```
+
+```{r}
+# top 5 most safe
+top_safe <- results[order(-results$Safety_Score), ][1:5, ]
+
+# bottom 5 least safe 
+bottom_5 <- results[order(results$Safety_Score), ][1:5, ]
+bottom_5 <- bottom_5[order(-bottom_5$Safety_Score), ]
+
+# format nicely
+kable(top_safe,
+      caption = paste("Top 5 Safest Restaurants for", allergy))
+kable(bottom_5,
+      caption = paste("Bottom 5 Least Safe Restaurants for", allergy))
+```
+
+```{r}
+# plot distribution of safety scores across all restaurants
+df <- data.frame(SafetyScore = safety_score)
+N <- nrow(df)
+binwidth <- 0.005
+
+ggplot(df, aes(x = SafetyScore)) +
+  geom_histogram(
+    aes(y = ..count..),
+    binwidth = binwidth,
+    fill = "darkseagreen3",
+    color = "darkgreen",
+    alpha = 0.7
+  ) +
+  geom_density(
+    aes(y = ..density.. * N * binwidth),
+    size = 1,
+    color = "darkgreen"
+  ) +
+  labs(
+    title = "Distribution of Restaurant Safety Scores",
+    x = "Safety Score",
+    y = "Number of Restaurants"
+  ) +
+  theme_minimal(base_size = 10)
+```
+
+
+```{r}
+# comparison of two methods (mlp and bayes ML)
+mlp_scores <- read.csv("~/Downloads/mlp_results.csv")
+names(mlp_scores)[2] <- "Safety_MLP"
+
+bayes_results <- results[, c("Restaurant", "Safety_Score")]
+names(bayes_results)[2] <- "Safety_Bayes"
+
+combined <- merge(bayes_results, mlp_scores, by = "Restaurant")
+
+# plot distributions against each other
+dens_df <- rbind(
+  data.frame(Safety = combined$Safety_MLP,  Method = "MLP"),
+  data.frame(Safety = combined$Safety_Bayes, Method = "Bayesian")
+)
+
+ggplot(dens_df, aes(x = Safety, color = Method, fill = Method)) +
+  geom_density(alpha = 0.25) +
+  labs(
+    title = "Distribution of Restaurant Safety Scores by Method",
+    x = "Safety Score",
+    y = "Density"
+  ) +
+  theme_minimal(base_size = 10)
+```
+
+```{r}
+# plot comparison of restaurant safety scores for a milk allergy to see how well
+# the two methods predict
+ggplot(combined, aes(x = Safety_MLP, y = Safety_Bayes)) +
+  geom_point(aes(color = abs(Safety_MLP - Safety_Bayes)),
+             alpha = 0.6, size = 2) +
+  scale_color_viridis_c(name = "Difference \n|MLP - Bayes|") +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "black") +
+  coord_cartesian(xlim = c(0.6, 1.00),  
+                  ylim = c(0.6, 1.00)) + 
+  labs(
+    title = "Comparison of MLP vs Bayesian Restaurant Safety Scores For Milk Allergy",
+    x = "Safety Score (MLP)",
+    y = "Safety Score (Bayesian)"
+  ) +
+  theme_minimal(base_size = 11)
+
+```
