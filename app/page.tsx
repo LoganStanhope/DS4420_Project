@@ -22,6 +22,17 @@ export default function MyComponent() {
          <br />
         <hr></hr>
          <br />
+         <Image 
+          src="/zoeMLPvsBay.png" 
+          alt="Top and Bottom 5 Restaurants for Poultry Allergy Ranking"
+          width={400} 
+          height={300}
+          className="mx-auto mb-6 rounded-xl"
+        />
+        <p>
+          Distribution of Restaurant Safety Scores (MLP vs Bayesian Model)
+        </p>
+        <br />
         <Image 
           src="/avgPredicitedAllergyProbAcrossAllDishes.png" 
           alt="Average Predicted Allergy Probability Across All Dishes" 
@@ -30,7 +41,7 @@ export default function MyComponent() {
           className="mx-auto mb-6 rounded-xl"
         />
         <p>
-          Average Predicted Allergy Probability Across All Dishes 
+          Average Predicted Allergy Probability Across All Dishes (MLP Model)
         </p>
         <br />
         <Image 
@@ -41,7 +52,18 @@ export default function MyComponent() {
           className="mx-auto mb-6 rounded-xl"
         />
         <p>
-          Distribution of Safety Scores for 'Fish Allergy' Across Restaurants
+          Distribution of Safety Scores for 'Fish Allergy' Across Restaurants (MLP Model)
+        </p>
+        <br />
+        <Image 
+          src="/zoeDistFish.png" 
+          alt="Top and Bottom 5 Restaurants for Poultry Allergy Ranking"
+          width={400} 
+          height={300}
+          className="mx-auto mb-6 rounded-xl"
+        />
+        <p>
+          Distribution of Safety Scores for Fish Allergy Across Restaurants (Bayesian Model)
         </p>
         <br />
         <Image 
@@ -52,7 +74,18 @@ export default function MyComponent() {
           className="mx-auto mb-6 rounded-xl"
         />
         <p>
-          Distribution of Safety Scores for 'Milk Allergy' Across Restaurants
+          Distribution of Safety Scores for 'Milk Allergy' Across Restaurants (MLP Model)
+        </p>
+        <br />
+        <Image 
+          src="/zoeDistMilk.png" 
+          alt="Top and Bottom 5 Restaurants for Poultry Allergy Ranking"
+          width={400} 
+          height={300}
+          className="mx-auto mb-6 rounded-xl"
+        />
+        <p>
+          Distribution of Safety Scores for Milk Allergy Across Restaurants (Bayesian Model)
         </p>
         <br />
         <Image 
@@ -63,7 +96,18 @@ export default function MyComponent() {
           className="mx-auto mb-6 rounded-xl"
         />
         <p>
-          Distribution of Restaurant Safety Scores
+          Distribution of Restaurant Safety Scores (MLP Model)
+        </p>
+        <br />
+        <Image 
+          src="/zoeDistSafety.png" 
+          alt="Top and Bottom 5 Restaurants for Poultry Allergy Ranking"
+          width={400} 
+          height={300}
+          className="mx-auto mb-6 rounded-xl"
+        />
+        <p>
+          Distribution of Restaurant Safety Scores (Bayesian Model)
         </p>
         <br />
         <Image 
@@ -74,7 +118,18 @@ export default function MyComponent() {
           className="mx-auto mb-6 rounded-xl"
         />
         <p>
-          Top and Bottom 5 Restaurants for Poultry Allergy Ranking
+          Top and Bottom 5 Restaurants for Poultry Allergy Ranking (MLP Model)
+        </p>
+        <br />
+        <Image 
+          src="/zoeDistPoultry.png" 
+          alt="Top and Bottom 5 Restaurants for Poultry Allergy Ranking"
+          width={400} 
+          height={300}
+          className="mx-auto mb-6 rounded-xl"
+        />
+        <p>
+          Distribution of Safety Scores for Poultry Allergy Across Restaurants (Bayesian Model)
         </p>
         <br />
         <Image 
@@ -85,7 +140,18 @@ export default function MyComponent() {
           className="mx-auto mb-6 rounded-xl"
         />
         <p>
-          Top and Bottom 5 Restaurants for Fish Allergy Ranking
+          Top and Bottom 5 Restaurants for Fish Allergy Ranking (MLP Model)
+        </p>
+        <br />
+         <Image 
+          src="/zoeDistFish2.png" 
+          alt="Top and Bottom 5 Restaurants for Poultry Allergy Ranking"
+          width={400} 
+          height={300}
+          className="mx-auto mb-6 rounded-xl"
+        />
+        <p>
+          Top 5 Safest Restaurants for a Fish Allergy (Bayesian Model)
         </p>
         <br />
       </div>
